@@ -2,9 +2,11 @@
     background-color: $size-bar-bg;
     width: $size-bar-width;
     @apply text-white font-bold h-screen flex flex-col select-none;
+    @apply transition-all duration-150;
 
     &.mini {
         width: $size-bar-mini-width;
+        @apply transition-all duration-150;
     }
 
     > * {

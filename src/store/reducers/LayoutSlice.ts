@@ -19,6 +19,12 @@ export const layoutSlice = createSlice({
         setState: (state, action: PayloadAction<ILayoutState>) => {
             return { ...state, ...action.payload };
         },
+        changeSizeBarState: (state) => {
+            if (state.sizeBarState === 'expan') {
+                return { ...state, sizeBarState: 'collapse' };
+            }
+            return { ...state, sizeBarState: 'expan' };
+        },
     },
 });
 

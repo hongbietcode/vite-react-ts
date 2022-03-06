@@ -24,6 +24,7 @@
         white-space: nowrap;
         overflow: hidden;
         flex: 1;
+        @apply transition-all duration-150;
     }
 
     .dropIcon {
@@ -36,7 +37,6 @@
 
     &.open {
         background-color: rgba($color: $size-bar-menu-group-bg, $alpha: 0.3);
-
         @apply transition-all duration-150;
 
         .dropIcon {
@@ -53,6 +53,13 @@
         .dropIcon {
             transform: rotate(0deg);
             @apply transition-all duration-150;
+        }
+    }
+
+    &.mini {
+        .title {
+            @apply transition-all duration-150;
+            opacity: 0;
         }
     }
 }

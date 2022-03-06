@@ -36,17 +36,6 @@ export const APP_MENU_DATA: INavLinkItem[] = [
         key: 'g-2',
         title: 'Group 2',
         icon: faBars,
-        children: [
-            {
-                key: 'g-2-i-1',
-                title: 'Item 1',
-                path: '/g-2-i-1',
-            },
-            {
-                key: 'g-2-i-2',
-                title: 'Item 2',
-                path: '/g-2-i-2',
-            },
-        ],
+        path: '/',
     },
 ];

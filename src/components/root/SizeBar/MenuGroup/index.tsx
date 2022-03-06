@@ -23,10 +23,12 @@ type ChildrenGroupProps = {
 const MENU_ITEM_HEIGHT = 48;
 
 const ChildrenGroup: FC<ChildrenGroupProps> = ({ data = [], open }) => {
+    const sizeBarState = useAppSelector((state) => state.layout.sizeBarState);
+
     if (data.length > 0) {
         return (
             <AnimatePresence>
-                {open && (
+                {open && sizeBarState === 'expan' && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{
@@ -58,6 +60,7 @@ const ChildrenGroup: FC<ChildrenGroupProps> = ({ data = [], open }) => {
 const MenuGroup: FC<MenuGroupProps> = ({ data }) => {
     const { key, icon, path, children, title } = data || {};
 
+    const sizeBarState = useAppSelector((state) => state.layout.sizeBarState);
     const activeKey = useAppSelector((state) => state.menu.menuActiveKey);
     const openKey = useAppSelector((state) => state.menu.menuOpenKey);
     const dispath = useAppDispatch();
@@ -65,7 +68,9 @@ const MenuGroup: FC<MenuGroupProps> = ({ data }) => {
     const isDispathActive = useRef(false);
 
     const onChangeOpenState = () => {
-        dispath(menuAction.setMenuOpenKey(openKey === key ? '' : key));
+        if (sizeBarState === 'expan') {
+            dispath(menuAction.setMenuOpenKey(openKey === key ? '' : key));
+        }
     };
 
     const _getMenuGropuClassName = (params?: any) => {
@@ -75,6 +80,7 @@ const MenuGroup: FC<MenuGroupProps> = ({ data }) => {
             return clsx(styles.menuGroup, {
                 [styles.active]: !!_childreKey.find((x) => x === activeKey),
                 [styles.open]: openKey === key,
+                [styles.mini]: sizeBarState === 'collapse',
             });
         }
 
@@ -86,10 +92,14 @@ const MenuGroup: FC<MenuGroupProps> = ({ data }) => {
             return clsx(styles.menuGroup, {
                 [styles.active]: isActive,
                 [styles.open]: openKey === key,
+                [styles.mini]: sizeBarState === 'collapse',
             });
         }
 
-        return clsx(styles.menuGroup, { [styles.open]: openKey === key });
+        return clsx(styles.menuGroup, {
+            [styles.open]: openKey === key,
+            [styles.mini]: sizeBarState === 'collapse',
+        });
     };
 
     if (children && children.length > 0) {
