@@ -1,4 +1,4 @@
-import { IAppDispatch, IRootState } from '@src/store';
+import { IAppDispatch, IRootState } from '@src/stores';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 export const useAppDispatch = () => useDispatch<IAppDispatch>();

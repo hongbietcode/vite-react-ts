@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from '@src/hooks/useAppDispatch';
-import { menuAction } from '@src/store/reducers/menuSlice';
+import { useAppDispatch } from '@core/hooks/useAppDispatch';
+import { menuAction } from '@src/stores/core-reducer/menuSlice';
 import { INavLinkItem } from '@src/types/utils';
 import clsx from 'clsx';
 import { FC, Fragment, useRef } from 'react';

@@ -6,6 +6,7 @@ import Inspect from 'vite-plugin-inspect';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import WindiCSS from 'vite-plugin-windicss';
 import Pages from 'vite-plugin-pages';
+import { RouteObject } from 'react-router';
 
 const PAGE_SYNC_LIST = [
     '/src/pages/[...all].tsx',
@@ -20,6 +21,7 @@ const lessToJS = require('less-vars-to-js');
 
 const pathResolver = (path: string) => resolve(__dirname, path);
 const themeVariables = lessToJS(fs.readFileSync(pathResolver('./config/antdVariables.less'), 'utf8'));
+const dev = process.env.NODE_ENV === 'development';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,14 +30,29 @@ export default defineConfig({
         react(),
         WindiCSS(),
         Pages({
-            onRoutesGenerated: (routes) => {
-                console.log('routes', routes);
+            exclude: ['**/components/*.**'],
+            onRoutesGenerated: (routes: RouteObject[]) => {
+                // console.log('routes', routes);
+                if (dev) {
+                    fs.writeFileSync(pathResolver('./routes.json'), JSON.stringify(routes));
+                }
             },
             importMode: (filePath: string) => {
                 if (PAGE_SYNC_LIST.findIndex((x) => x == filePath) != -1) {
                     return 'sync';
                 }
                 return 'async';
+            },
+            extendRoute(route, parent) {
+                if (route.path === 'login') {
+                    return route;
+                }
+                // console.log('route', route);
+
+                return {
+                    ...route,
+                    meta: { auth: true },
+                };
             },
         }),
         tsconfigPaths(),

@@ -1,21 +1,4 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { ILayout } from '@src/core/layout';
-
-type IRouter = {
-    title?: string;
-    path?: string;
-    index?: boolean;
-    page: any;
-
-    caseSensitive?: boolean;
-    children?: IRouter[];
-};
-
-type IRouterMap = {
-    layout?: ILayout;
-    basePath?: string;
-    routers: IRouter[];
-};
 
 type INavLinkItem = {
     key: string;
@@ -24,3 +7,12 @@ type INavLinkItem = {
     icon?: IconProp;
     children?: Omit<INavLinkItem, 'children'>[];
 };
+
+declare module 'react-router-dom' {
+    interface RouteObject {
+        meta?: {
+            auth: boolean;
+            role: string;
+        };
+    }
+}

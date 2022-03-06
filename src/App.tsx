@@ -1,9 +1,9 @@
-import AppRouter from '@src/core/router';
+import AppRouter from '@core/router';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store } from './store';
+import { store } from './stores';
 
 import 'virtual:windi.css';
 

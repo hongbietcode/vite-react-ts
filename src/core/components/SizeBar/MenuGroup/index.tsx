@@ -1,7 +1,7 @@
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAppDispatch, useAppSelector } from '@src/hooks/useAppDispatch';
-import { menuAction } from '@src/store/reducers/menuSlice';
+import { useAppDispatch, useAppSelector } from '@core/hooks/useAppDispatch';
+import { menuAction } from '@src/stores/core-reducer/menuSlice';
 import { INavLinkItem } from '@src/types/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 

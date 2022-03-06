@@ -1,4 +1,4 @@
-import { Input } from 'antd';
+import FormDemo from '@src/modules/admin/components/FormDemo';
 import { FC } from 'react';
 
 type LoginProps = {
@@ -6,12 +6,7 @@ type LoginProps = {
 };
 
 const LoginPage: FC<LoginProps> = () => {
-    return (
-        <div style={{ height: 10000 }}>
-            <Input />
-            <h1>Login</h1>
-        </div>
-    );
+    return <FormDemo />;
 };
 
 export default LoginPage;

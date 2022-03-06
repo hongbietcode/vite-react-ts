@@ -1,4 +1,4 @@
-import JSON_DATA from '@src/assets/json';
+import JSON_DATA from '@core/assets/json';
 import { Button } from 'antd';
 import { FC } from 'react';
 import Lottie from 'react-lottie';

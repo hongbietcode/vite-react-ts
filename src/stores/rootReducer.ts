@@ -2,8 +2,8 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { PersistConfig, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import layoutReducer from './layoutSlice';
-import menuReducer from './menuSlice';
+import layoutReducer from './core-reducer/layoutSlice';
+import menuReducer from './core-reducer/menuSlice';
 
 const persistConfig: PersistConfig<ICombinedState> = {
     key: 'root',

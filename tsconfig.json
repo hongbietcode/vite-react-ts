@@ -16,8 +16,11 @@
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
-            "@pages/*": ["src/pages/*"],
             "@core/*": ["src/core/*"],
+            "@modules/*": ["src/modules/*"],
+            "@pages/*": ["src/pages/*"],
+            "@stores/*": ["src/stores/*"],
+            "@types/*": ["src/types/*"],
             "@src/*": ["src/*"],
             "@public/*": ["public/*"],
             "@config/*": ["config/*"]

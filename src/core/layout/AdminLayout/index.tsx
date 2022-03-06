@@ -1,9 +1,16 @@
-import NavBar from '@src/components/root/NavBar';
-import SideBar from '@src/components/root/SizeBar';
-import { FC } from 'react';
+import NavBar from '@core/components/NavBar';
+import SideBar from '@core/components/SizeBar';
+import { FC, useEffect } from 'react';
+import { useLocation } from 'react-use';
 import styles from './styles.module.scss';
 
 const AdminLayout: FC = ({ children }) => {
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log(location);
+    }, [location]);
+
     return (
         <section className={styles.layout}>
             <SideBar />
