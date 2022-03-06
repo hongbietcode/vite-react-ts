@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-const HomePage: FC = () => {
+const Page2: FC = () => {
     return (
         <div>
             <h1>Example</h1>
@@ -8,4 +8,4 @@ const HomePage: FC = () => {
     );
 };
 
-export default HomePage;
+export default Page2;

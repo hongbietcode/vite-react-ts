@@ -22,6 +22,7 @@
         "@fortawesome/free-solid-svg-icons": "^6.0.0",
         "@fortawesome/react-fontawesome": "^0.1.17",
         "@reduxjs/toolkit": "^1.8.0",
+        "@types/nprogress": "^0.2.0",
         "antd": "^4.18.9",
         "axios": "^0.26.0",
         "clsx": "^1.1.1",
@@ -30,13 +31,17 @@
         "fs": "^0.0.1-security",
         "lodash": "^4.17.21",
         "moment": "^2.29.1",
+        "nprogress": "^0.2.0",
         "query-string": "^7.1.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-hook-form": "^7.27.1",
+        "react-lottie": "^1.2.3",
         "react-redux": "^7.2.6",
         "react-router-dom": "^6.2.2",
         "react-use": "^17.3.2",
         "redux-persist": "^6.0.0"
+      
     },
     "devDependencies": {
         "@types/axios": "^0.14.0",
@@ -45,6 +50,7 @@
         "@types/node": "^17.0.21",
         "@types/react": "^17.0.33",
         "@types/react-dom": "^17.0.10",
+        "@types/react-lottie": "^1.2.6",
         "@types/react-redux": "^7.1.23",
         "@types/react-router-dom": "^5.3.3",
         "@types/redux-logger": "^3.0.9",
@@ -61,7 +67,6 @@
         "husky": "^7.0.4",
         "less": "^4.1.2",
         "less-vars-to-js": "^1.3.0",
-        "postcss": "^8.4.7",
         "prettier": "^2.5.1",
         "redux-logger": "^3.0.6",
         "sass": "^1.49.9",
@@ -70,8 +75,11 @@
         "vite": "^2.8.0",
         "vite-plugin-imp": "^2.1.6",
         "vite-plugin-inspect": "^0.4.3",
-        "vite-tsconfig-paths": "^3.4.1",
-        "vitest": "^0.5.9"
+        "vite-plugin-windicss": "^1.8.3",
+        "vite-tsconfig-paths": "^3.4.1",  "vite-plugin-pages": "^0.21.4",
+        "vite-plugin-pages-sitemap": "^1.1.11",
+        "vitest": "^0.5.9",
+        "windicss": "^3.5.1"
     },
     "browserslist": {
         "production": [
@@ -85,5 +93,28 @@
             "last 1 safari version",
             "last 1 ie version"
         ]
+    },
+    "vite": {
+        "optimizeDeps": {
+            "include": [
+                "@fortawesome/free-solid-svg-icons",
+                "@fortawesome/react-fontawesome",
+                "@reduxjs/toolkit",
+                "antd",
+                "clsx",
+                "framer-motion",
+                "lodash/cloneDeep",
+                "react",
+                "react-dom",
+                "react-lottie",
+                "react-redux",
+                "react-router",
+                "react-router-dom",
+                "redux-logger",
+                "redux-persist",
+                "redux-persist/integration/react",
+                "redux-persist/lib/storage"
+            ]
+        }
     }
 }

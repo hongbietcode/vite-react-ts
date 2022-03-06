@@ -1,18 +1,5 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { INavLinkItem, IRouterMap } from '@src/types/utils';
-import React from 'react';
-
-export const APP_ROUTER_MAP: IRouterMap = {
-    layout: 'AppLayout',
-    basePath: '/',
-    routers: [
-        {
-            index: true,
-            path: 'g-1-i-1',
-            page: React.lazy(() => import('@pages/login')),
-        },
-    ],
-};
+import { INavLinkItem } from '@src/types/utils';
 
 export const APP_MENU_DATA: INavLinkItem[] = [
     {

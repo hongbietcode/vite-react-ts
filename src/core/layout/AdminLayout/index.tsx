@@ -1,21 +1,18 @@
 import NavBar from '@src/components/root/NavBar';
 import SideBar from '@src/components/root/SizeBar';
 import { FC } from 'react';
-import { Outlet } from 'react-router-dom';
 import styles from './styles.module.scss';
 
-const AppLayout: FC = () => {
+const AdminLayout: FC = ({ children }) => {
     return (
         <section className={styles.layout}>
             <SideBar />
             <div className="flex flex-col flex-1 h-screen">
                 <NavBar />
-                <div className={styles.container}>
-                    <Outlet />
-                </div>
+                <div className={styles.container}>{children}</div>
             </div>
         </section>
     );
 };
 
-export default AppLayout;
+export default AdminLayout;

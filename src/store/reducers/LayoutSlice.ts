@@ -1,14 +1,10 @@
-import { APP_ROUTER_MAP } from '@core/router/routes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IRouterMap } from '@src/types/utils';
 
 type ILayoutState = {
-    routerMap: IRouterMap;
     sizeBarState?: ISizeBarState;
 };
 
 const initialState: ILayoutState = {
-    routerMap: APP_ROUTER_MAP,
     sizeBarState: 'collapse',
 };
 

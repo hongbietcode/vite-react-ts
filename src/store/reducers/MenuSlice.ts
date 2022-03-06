@@ -1,5 +1,5 @@
-import { APP_MENU_DATA } from '@core/router/routes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { APP_MENU_DATA } from '@src/components/root/SizeBar/data';
 import { INavLinkItem } from '@src/types/utils';
 
 type IMenuState = {
