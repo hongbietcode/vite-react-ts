@@ -4,9 +4,8 @@ import RouterUtils from '@src/utils/RouterUtils';
 import React, { FC, Fragment, Suspense } from 'react';
 import { useRoutes } from 'react-router';
 import { RouteObject } from 'react-router-dom';
-import _loadash from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { useEffect } from 'react';
-import { useDeepCompareEffect } from 'react-use';
 import { useAppDispatch } from '@src/hooks/useAppDispatch';
 import { layoutAction } from '@src/store/reducers/layoutSlice';
 
@@ -74,7 +73,7 @@ type AppRouterProps = {
 };
 
 const AppRouter: FC<AppRouterProps> = ({ children, routerMap }) => {
-    const routers = useRoutes(getRouterMap(_loadash.cloneDeep(routerMap)));
+    const routers = useRoutes(getRouterMap(cloneDeep(routerMap)));
     const dispath = useAppDispatch();
 
     useEffect(() => {
