@@ -1,0 +1,31 @@
+.menuItem {
+    @apply flex items-center;
+    border-radius: 0.3rem;
+
+    & + & {
+        margin-top: 5px;
+    }
+
+    &:hover {
+        background-color: rgba($color: $size-bar-menu-group-bg, $alpha: 0.15);
+        @apply transition-all duration-150;
+    }
+
+    &.active {
+        color: $size-bar-bg;
+        background: white;
+        @apply transition-all duration-150;
+    }
+
+    .fakeIcon {
+        width: $size-bar-menu-group-height;
+        min-width: $size-bar-menu-group-height;
+    }
+
+    .title {
+        padding: 10px 10px 10px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        flex: 1;
+    }
+}

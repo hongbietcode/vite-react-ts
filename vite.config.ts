@@ -33,10 +33,13 @@ export default defineConfig({
         }),
     ],
     css: {
-        modules: { localsConvention: 'camelCase' },
+        modules: { localsConvention: 'camelCase', scopeBehaviour: 'local' },
         preprocessorOptions: {
             scss: { additionalData: `@import "./src/core/scss/_variable.scss";\n` },
             less: { javascriptEnabled: true, modifyVars: themeVariables },
         },
+    },
+    optimizeDeps: {
+        exclude: ['@fortawesome/fontawesome-free'],
     },
 });

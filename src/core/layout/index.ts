@@ -1,9 +1,7 @@
 import AppLayout from './AppLayout';
-import AuthLayout from './AuthLayout';
 
 const LAYOUTS = {
-    AdminLayout: AppLayout,
-    AuthLayout: AuthLayout,
+    AppLayout: AppLayout,
 };
 
 export default LAYOUTS;

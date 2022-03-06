@@ -1,10 +1,17 @@
 {
-    "extends": ["prettier", "eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"],
+    "extends": [
+        "prettier",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended"
+    ],
     "plugins": ["prettier", "@typescript-eslint"],
     "parser": "@typescript-eslint/parser",
     "rules": {
         "@typescript-eslint/no-explicit-any": ["off"],
         "@typescript-eslint/explicit-module-boundary-types": ["off"],
+        "@typescript-eslint/no-non-null-assertion": ["off"],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "@typescript-eslint/no-var-requires": 0,
@@ -27,7 +34,7 @@
                 "trailingComma": "es5",
                 "useTabs": false,
                 "vueIndentScriptAndStyle": false,
-                "printWidth": 180,
+                "printWidth": 120,
                 "endOfLine": "auto"
             }
         ]

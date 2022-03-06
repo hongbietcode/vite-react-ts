@@ -1,1 +1,1 @@
-type ABC = any;
+type ISizeBarState = 'expan' | 'collapse';

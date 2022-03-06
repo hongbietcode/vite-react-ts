@@ -16,12 +16,14 @@
         "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
+            "@pages/*": ["src/pages/*"],
+            "@core/*": ["src/core/*"],
             "@src/*": ["src/*"],
             "@public/*": ["public/*"],
             "@config/*": ["config/*"]
         }
     },
-    "include": ["**/*.ts", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "babel.config.js"],
     "exclude": ["node_modules"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

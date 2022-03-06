@@ -2,7 +2,13 @@ module.exports = {
     mode: 'jit',
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                white: '#ffffff',
+            },
+        },
     },
     plugins: [],
 };

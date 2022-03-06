@@ -1,60 +1,94 @@
-import { APP_ROUTERS, AUTH_ROUTERS } from '@config/routerConfig';
-import SCREENS from '@src/screens';
-import { FC, Suspense, useCallback } from 'react';
-import AuthLayout from '../layout/AuthLayout';
-import { BrowserRouter, Routes, Route, Link, Outlet, RouteObject } from 'react-router-dom';
+import LAYOUTS from '@core/layout';
+import { IRouter, IRouterMap } from '@src/types/utils';
+import RouterUtils from '@src/utils/RouterUtils';
+import React, { FC, Fragment, Suspense } from 'react';
 import { useRoutes } from 'react-router';
-import { IRouter } from '@src/types/utils';
+import { RouteObject } from 'react-router-dom';
+import _loadash from 'lodash';
+import { useEffect } from 'react';
+import { useDeepCompareEffect } from 'react-use';
+import { useAppDispatch } from '@src/hooks/useAppDispatch';
+import { layoutAction } from '@src/store/reducers/layoutSlice';
 
-type Props = {
-    isLogin: boolean;
+const getArrRouterObject = (routers: IRouter[]): RouteObject[] => {
+    return routers.map<RouteObject>((router: IRouter) => {
+        const Element = typeof router.page == 'function' ? router.page() : router.page;
+        const $$type = Element.$$typeof;
+
+        switch ($$type) {
+            case Symbol.for('react.element'):
+                return {
+                    ...router,
+                    element: Element,
+                    children: router.children ? getArrRouterObject(router.children) : undefined,
+                };
+
+            case Symbol.for('react.lazy'):
+                return {
+                    ...router,
+                    path: RouterUtils.trimPath(router.path),
+                    element: (
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Element />
+                        </Suspense>
+                    ),
+                    children: router.children ? getArrRouterObject(router.children) : undefined,
+                };
+
+            default:
+                return {
+                    ...router,
+                    path: RouterUtils.trimPath(router.path),
+                    element: <div>404</div>,
+                    children: router.children ? getArrRouterObject(router.children) : undefined,
+                };
+        }
+    });
 };
 
-const RouterApp: FC<Props> = ({ isLogin }) => {
-    const _getRoutes = useCallback((routers: IRouter[]) => {
-        const _routes: RouteObject[] = [];
+const getRouterMap = (map: IRouterMap): RouteObject[] => {
+    const data: RouteObject[] = [];
+    const Layout = map.layout ? LAYOUTS[map.layout] : null;
 
-        const _children = routers.map<RouteObject>((route: IRouter) => {
-            const SCREEN = SCREENS[route.page];
-
-            return {
-                path: route.path,
-                element: (
-                    <Suspense fallback={<div>loading...</div>}>
-                        <SCREEN />
-                    </Suspense>
-                ),
-            };
-        });
-
-        _routes.push({
-            path: '/',
+    if (Layout) {
+        data.push({
+            index: map.routers?.length == 0,
+            path: RouterUtils.trimPath(map.basePath) || '/',
             element: <Layout />,
-            children: _children,
+            children: getArrRouterObject(map.routers),
         });
+    } else {
+        data.push(...getArrRouterObject(map.routers));
+    }
 
-        return _routes;
-    }, []);
+    data.push({
+        path: '*',
+        element: <div>404</div>,
+    });
 
-    const routers = useRoutes(_getRoutes(AUTH_ROUTERS));
-
-    console.log('routers', routers);
-
-    return <div>{routers}</div>;
+    return data;
 };
 
-export default RouterApp;
+type AppRouterProps = {
+    routerMap: IRouterMap;
+};
 
-function Layout() {
+const AppRouter: FC<AppRouterProps> = ({ children, routerMap }) => {
+    const routers = useRoutes(getRouterMap(_loadash.cloneDeep(routerMap)));
+    const dispath = useAppDispatch();
+
+    useEffect(() => {
+        if (routerMap) {
+            dispath(layoutAction.setState({ routerMap: routerMap }));
+        }
+    }, [dispath, routerMap]);
+
     return (
-        <div>
-            <h1>Welcome to the app!</h1>
-            <nav>
-                <Link to="login">login</Link> | <Link to="dashboard">Dashboard</Link>
-            </nav>
-            <div className="content">
-                <Outlet />
-            </div>
-        </div>
+        <Fragment>
+            {routers}
+            {children}
+        </Fragment>
     );
-}
+};
+
+export default AppRouter;
