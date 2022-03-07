@@ -7,6 +7,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import WindiCSS from 'vite-plugin-windicss';
 import Pages from 'vite-plugin-pages';
 import { RouteObject } from 'react-router';
+import OptimizationPersist from 'vite-plugin-optimize-persist';
+import PkgConfig from 'vite-plugin-package-config';
 
 const PAGE_SYNC_LIST = [
     '/src/pages/[...all].tsx',
@@ -29,6 +31,8 @@ export default defineConfig({
     plugins: [
         react(),
         WindiCSS(),
+        PkgConfig(),
+        OptimizationPersist(),
         Pages({
             exclude: ['**/components/*.**'],
             onRoutesGenerated: (routes: RouteObject[]) => {
