@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@core/hooks/useAppDispatch';
+import { useAppDispatch } from '@src/hooks/useAppDispatch';
 import { menuAction } from '@src/stores/core-reducer/menuSlice';
 import { INavLinkItem } from '@src/types/utils';
 import clsx from 'clsx';

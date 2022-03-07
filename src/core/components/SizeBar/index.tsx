@@ -1,7 +1,7 @@
 import { APP_CONFIG } from '@config/appConfig';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAppDispatch, useAppSelector } from '@core/hooks/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@src/hooks/useAppDispatch';
 import { layoutAction } from '@src/stores/core-reducer/layoutSlice';
 import { INavLinkItem } from '@src/types/utils';
 import clsx from 'clsx';
