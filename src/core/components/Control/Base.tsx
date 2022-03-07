@@ -1,6 +1,6 @@
 import { Form, FormItemProps } from 'antd';
 import { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 type BaseProps = {
     label?: string | React.ReactNode;

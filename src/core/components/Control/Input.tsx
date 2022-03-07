@@ -1,5 +1,5 @@
 import { Form, Input, InputProps } from 'antd';
-import { Fragment, memo, useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { Controller, FieldValues } from 'react-hook-form';
 import { IFormControlProps } from './type';
 import ErrMessage from './ErrorMessage';

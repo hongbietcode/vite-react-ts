@@ -1,6 +1,5 @@
 import { Checkbox, Form } from 'antd';
 import { CheckboxProps } from 'antd/lib/checkbox';
-import { memo } from 'react';
 import { Controller, FieldValues } from 'react-hook-form';
 import { IFormControlProps } from './type';
 import ErrMessage from './ErrorMessage';

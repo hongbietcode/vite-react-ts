@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "strictPropertyInitialization": false,
         "experimentalDecorators": true,
         "target": "esnext",
         "lib": ["dom", "dom.iterable", "esnext"],

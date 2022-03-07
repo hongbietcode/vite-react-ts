@@ -81,7 +81,7 @@ export default defineConfig({
             scss: { additionalData: `@import "./src/core/scss/_variable.scss";\n` },
         },
     },
-    optimizeDeps: {
-        exclude: ['@fortawesome/fontawesome-free'],
+    build: {
+        cssCodeSplit: false,
     },
 });

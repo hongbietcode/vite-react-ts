@@ -1,15 +1,18 @@
 import { IsNotEmpty } from 'class-validator';
 
 class LoginModel {
-    @IsNotEmpty()
+    @IsNotEmpty({
+        groups: ['edit'],
+    })
     public username: string;
 
-    @IsNotEmpty()
+    @IsNotEmpty({
+        groups: ['edit'],
+    })
     public password: string;
 
-    constructor(username: string, password: string) {
-        this.username = username;
-        this.password = password;
+    constructor(props: Partial<LoginModel>) {
+        Object.assign(this, props);
     }
 }
 

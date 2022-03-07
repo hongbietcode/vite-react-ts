@@ -1,14 +1,18 @@
 .ant-form-vertical {
     .ant-form-item-label {
-        @apply relative w-full;
+        position: relative;
+        width: 100%;
 
         & > label {
-            @apply static flex-row-reverse;
+            position: static;
+            flex-direction: row-reverse;
             &::before {
                 margin-left: 4px;
             }
+
             .ant-form-item-tooltip {
-                @apply absolute right-0;
+                position: absolute;
+                right: 0;
             }
         }
     }
@@ -18,5 +22,13 @@
     &.ant-form-item-explain-error {
         font-size: 12px !important;
         @apply text-red-500;
+    }
+}
+
+@media (max-width: 575px) {
+    .ant-form .ant-form-item .ant-form-item-label,
+    .ant-form .ant-form-item .ant-form-item-control {
+        max-width: 100%;
+        flex: none;
     }
 }
