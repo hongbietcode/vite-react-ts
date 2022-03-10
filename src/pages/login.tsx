@@ -1,4 +1,5 @@
-import FormDemo from '@src/modules/admin/components/FormDemo';
+import authHOC from '@src/hoc/authHOC';
+import { Button } from 'antd';
 import { FC } from 'react';
 
 type LoginProps = {
@@ -6,7 +7,11 @@ type LoginProps = {
 };
 
 const LoginPage: FC<LoginProps> = () => {
-    return <FormDemo />;
+    return (
+        <div className="h-screen w-screen flex justify-center items-center">
+            <Button type="primary">Đăng nhập</Button>
+        </div>
+    );
 };
 
-export default LoginPage;
+export default authHOC({ loadingInAuthorize: true })(LoginPage);
