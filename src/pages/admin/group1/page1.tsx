@@ -1,3 +1,4 @@
+import authHOC from '@src/hoc/authHOC';
 import { FC } from 'react';
 
 const Page1: FC = () => {
@@ -8,4 +9,4 @@ const Page1: FC = () => {
     );
 };
 
-export default Page1;
+export default authHOC()(Page1);

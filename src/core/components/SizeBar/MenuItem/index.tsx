@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@src/hooks/useAppDispatch';
-import { menuAction } from '@src/stores/core-reducer/menuSlice';
 import { INavLinkItem } from '@src/types/utils';
+import { menuAction } from '@stores/menuSlice';
 import clsx from 'clsx';
 import { FC, Fragment, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -36,7 +36,7 @@ const MenuItem: FC<MenuItemProps> = ({ data, height }) => {
         return <Fragment />;
     }
     return (
-        <NavLink to={path} style={{ height: height }} className={_getMenuItemClassName}>
+        <NavLink to={path} replace={true} style={{ height: height }} className={_getMenuItemClassName}>
             <div className={styles.fakeIcon}></div>
             <div className={styles.title}>
                 <span>{title}</span>

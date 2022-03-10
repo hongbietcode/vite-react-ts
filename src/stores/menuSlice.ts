@@ -1,21 +1,22 @@
+import { SIZE_BAR_DATA } from '@config/sizeBarConfig';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { APP_MENU_DATA } from '@core/components/SizeBar/data';
 import { INavLinkItem } from '@src/types/utils';
+import { MENU_KEY } from './keys';
 
-type IMenuState = {
+export type IMenuState = {
     menuData?: INavLinkItem[];
     menuActiveKey?: string;
     menuOpenKey?: string;
 };
 
 const initialState: IMenuState = {
-    menuData: APP_MENU_DATA,
-    menuActiveKey: APP_MENU_DATA.find((x) => x.key)?.key,
-    menuOpenKey: APP_MENU_DATA.find((x) => x.key)?.key,
+    menuData: SIZE_BAR_DATA,
+    menuActiveKey: SIZE_BAR_DATA.find((x) => x.key)?.key,
+    menuOpenKey: SIZE_BAR_DATA.find((x) => x.key)?.key,
 };
 
 export const menuSlice = createSlice({
-    name: 'layout',
+    name: MENU_KEY,
     initialState,
     reducers: {
         setState: (state, action: PayloadAction<IMenuState>) => {
@@ -33,6 +34,6 @@ export const menuSlice = createSlice({
 });
 
 export const menuAction = menuSlice.actions;
-const menuReducer = menuSlice.reducer;
 
+const menuReducer = menuSlice.reducer;
 export default menuReducer;

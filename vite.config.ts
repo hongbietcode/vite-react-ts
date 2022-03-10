@@ -41,7 +41,9 @@ export default defineConfig({
                     fs.writeFileSync(pathResolver('./routes.json'), JSON.stringify(routes));
                 }
             },
-            importMode: (filePath: string) => {
+            importMode: (filePath: string, ...data) => {
+                return 'sync';
+
                 if (PAGE_SYNC_LIST.findIndex((x) => x == filePath) != -1) {
                     return 'sync';
                 }

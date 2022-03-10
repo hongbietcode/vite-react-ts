@@ -1,15 +1,15 @@
 import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDispatch, useAppSelector } from '@src/hooks/useAppDispatch';
-import { menuAction } from '@src/stores/core-reducer/menuSlice';
 import { INavLinkItem } from '@src/types/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import clsx from 'clsx';
-import React, { FC, Fragment, useRef } from 'react';
+import { FC, Fragment, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './styles.module.scss';
 import MenuItem from '../MenuItem';
+import { menuAction } from '@stores/menuSlice';
 
 type MenuGroupProps = {
     data: INavLinkItem;
@@ -77,6 +77,7 @@ const MenuGroup: FC<MenuGroupProps> = ({ data }) => {
         const { isActive } = params || {};
         if (children && children.length > 0) {
             const _childreKey = children.map((item) => item.key);
+
             return clsx(styles.menuGroup, {
                 [styles.active]: !!_childreKey.find((x) => x === activeKey),
                 [styles.open]: openKey === key,
@@ -124,7 +125,7 @@ const MenuGroup: FC<MenuGroupProps> = ({ data }) => {
 
     if (path) {
         return (
-            <NavLink to={path} onClick={onChangeOpenState} className={_getMenuGropuClassName}>
+            <NavLink to={path} replace={true} onClick={onChangeOpenState} className={_getMenuGropuClassName}>
                 <div className={styles.icon}>
                     <FontAwesomeIcon icon={icon || faBars} />
                 </div>

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LAYOUT_KEY } from './keys';
 
-type ILayoutState = {
+export type ILayoutState = {
     sizeBarState?: ISizeBarState;
 };
 
@@ -9,7 +10,7 @@ const initialState: ILayoutState = {
 };
 
 export const layoutSlice = createSlice({
-    name: 'layout',
+    name: LAYOUT_KEY,
     initialState,
     reducers: {
         setState: (state, action: PayloadAction<ILayoutState>) => {
@@ -25,6 +26,6 @@ export const layoutSlice = createSlice({
 });
 
 export const layoutAction = layoutSlice.actions;
-const layoutReducer = layoutSlice.reducer;
 
+const layoutReducer = layoutSlice.reducer;
 export default layoutReducer;
