@@ -32,9 +32,12 @@ const numberFormat = (x: number | string, inValidResult = '--') => {
     return inValidResult;
 };
 
+const randomPrimeNumber = () => {}
+
 const NumberUtils = {
     vndFormat,
     numberFormat,
+    randomPrimeNumber
 };
 
 export default NumberUtils;
